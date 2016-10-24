@@ -20,9 +20,9 @@ int main(int argc, char **argv)
 	unsigned int p = 0;
 	unsigned int n = 0;
 
-	cout << "zahl 1 :";
+	cout << "zahl x :";
 	cin >> zahl1;
-	cout << "zahl 2 :";
+	cout << "zahl y :";
 	cin >> zahl2;
 	cout << "zahl n :";
 	cin >> n;
@@ -34,13 +34,18 @@ int main(int argc, char **argv)
 }
 
 void mask(unsigned int zahl){
-
+	int s = 0;
 	//erstellung der Maske
 	unsigned int maske = 0;
 	maske = ~((~(unsigned)0)>>1);
 
 	//while schleife
 	while (maske != 0){
+	if (s % 4 == 0){
+		cout << " ";
+	}
+	s++;
+
 	//fallunterscheidung
 		//falls es keien 0 ist gebe 1 aus
 		if ((zahl & maske) != 0){
@@ -57,8 +62,8 @@ void mask(unsigned int zahl){
 
 void bitshifter(unsigned int zahl1,unsigned int zahl2, unsigned int p, unsigned int n){
 	//Ausgabe beider Ursprungszahlen in binary für kontrolle und so
-	cout << "Zahl 1: "; mask(zahl1);
-	cout << endl << "Zahl 2: ";mask(zahl2);
+	cout << "Zahl x: "; mask(zahl1);
+	cout << endl << "Zahl y: ";mask(zahl2);
 	cout <<endl<< "ergeb.: ";
 
 	//Maske für zahl2 erstellen und drüberlegen
@@ -66,20 +71,18 @@ void bitshifter(unsigned int zahl1,unsigned int zahl2, unsigned int p, unsigned 
 	maske = ~((~(unsigned)0) << n);
 	zahl2 &= maske;
 	//Zahl 2 and richtige Stelle schieben
-	zahl2 <<= (p);
+	zahl2 <<= (p-n);
 	
 	//maske zahl 1 erstellen
 	unsigned int maske2 = 0;
-	maske2 = (~(unsigned)0);				//FEHLER
-	maske2 ^= (maske<<p);
+	maske2 = (~(unsigned)0);
+	maske2 ^= (maske<<(p-n));
 	//maske über zahl legen
 	zahl1 &= maske2;
 	zahl1 ^= zahl2;
 	//ausgabe veränderter zahl
 	mask(zahl1);
-
-
-	
+	cout<<endl <<"MASKEN"<< endl<<"Maske2: "; mask(maske); cout << endl<<"Maske1: "; mask(maske2);
 	
 }
 
