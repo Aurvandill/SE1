@@ -71,18 +71,19 @@ void bitshifter(unsigned int zahl1,unsigned int zahl2, unsigned int p, unsigned 
 	maske = ~((~(unsigned)0) << n);
 	zahl2 &= maske;
 	//Zahl 2 and richtige Stelle schieben
-	zahl2 <<= (p-n);
+	zahl2 <<= (p-n+1);
 	
 	//maske zahl 1 erstellen
 	unsigned int maske2 = 0;
 	maske2 = (~(unsigned)0);
-	maske2 ^= (maske<<(p-n));
+	maske2 ^= (maske<<(p-n+1));
 	//maske über zahl legen
 	zahl1 &= maske2;
 	zahl1 ^= zahl2;
 	//ausgabe veränderter zahl
 	mask(zahl1);
 	cout<<endl <<"MASKEN"<< endl<<"Maske2: "; mask(maske); cout << endl<<"Maske1: "; mask(maske2);
+
 	
 }
 
