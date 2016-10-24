@@ -21,19 +21,19 @@ void mask(unsigned int zahl){
 	unsigned int maske = 0;
 	maske = ~((~(unsigned)0)>>1);
 
-
+	//while schleife
 	while (maske != 0){
-
+	//fallunterscheidung
+		//falls es keien 0 ist gebe 1 aus
 		if ((zahl & maske) != 0){
 			printf ("1");
 		}
+		//falls 0 gebe 0 aus
 		else {
 			printf ("0");
 		}
-		maske = maske>>1;
-
-
-
+	//maske wird um 1 nach rechts verschoben
+	maske >>= 1;
 	}
 
 
