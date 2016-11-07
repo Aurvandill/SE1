@@ -1,4 +1,3 @@
-//Ich hane keien ahnung oob es korrekt läuft~ keine lsut zum testen
 
 #include <iostream>
 
